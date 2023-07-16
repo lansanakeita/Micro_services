@@ -1,42 +1,41 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
-import { Product } from './product.model';
-import { PrismaClient } from '@prisma/client';
+import { Product } from './stubs/product/v1alpha/product';
+import { Prisma } from '@prisma/client';
+import { PrismaService } from './prisma.service';
 
 
 @Injectable()
 export class AppService {
-  private products: Product[] = [];
-  private prisma: PrismaClient;
-
-  constructor() {
-    this.prisma = new PrismaClient();
+  constructor( private readonly prisma:PrismaService) {
   }
 
-  getHello(): string {
-    return 'Hello World!';
-  }
-
-  async findAll(): Promise<Product[]> {
+  async GetProducts(): Promise<Product[]> {
     const products = await this.prisma.product.findMany();
     return products;
   }
 
-  async create(product: Product): Promise<Product> {
+  async CreateProduct(product: Prisma.ProductCreateInput): Promise<Product> {
     return this.prisma.product.create({
       data: {
+        name:product.name,
         description: product.description,
         price: product.price,
+        quantity:product.quantity
       },
     });
   }
-  
-  async update(id: number, product: Product): Promise<Product> {
+
+
+  async UpdateProduct(id: number, product: Prisma.ProductUpdateInput): Promise<Product> {
     try {
       return this.prisma.product.update({
-        where: { id: Number(id) },
+        where: { id },
         data: {
+          name:product.name,
           description: product.description,
           price: product.price,
+          quantity:product.quantity
+          
         },
       });
     } catch (error) {
@@ -45,14 +44,10 @@ export class AppService {
     }
   }
 
-  async delete(id: number): Promise<Product> {
-    try {
-      return this.prisma.product.delete({
-        where: { id: Number(id)},
-      });
-    } catch (error) {
-      console.error(error);
-      throw new HttpException('An error occurred while deleting the product.', HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+  async deleteProduct(id: number): Promise<Product> {
+    return this.prisma.product.delete({
+      where: { id },
+    });
+    
   }
 }
