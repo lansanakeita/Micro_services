@@ -31,7 +31,8 @@
 ```bash
 $ npm install
 $ npm install @prisma/client
-$ npm i @nestjs/microservices @grpc/grpc-js @grpc/proto-loader nestjs-grpc-reflection (installation grpc)
+$ npm i @nestjs/microservices @grpc/grpc-js @grpc/proto-loader
+$ nestjs-grpc-reflection :installation grpc
 ```
 
 ## Running the app

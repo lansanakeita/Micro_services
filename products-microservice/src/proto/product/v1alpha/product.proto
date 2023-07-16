@@ -4,8 +4,10 @@ package product.v1alpha;
 
 message Product {
   int32 id = 1;
-  string description = 2;
-  int32 price = 3;
+  string name = 2;
+  string description = 3;
+  int32 price = 4;
+  int32 quantity = 5;
 }
 
 
@@ -18,7 +20,9 @@ service ProductService {
 
 message GetProductRequest {
   int32 id = 1;
-  string description = 2;
+  string name = 2;
+  string description = 3;
+  int32 quantity = 4;
 }
 
 
@@ -28,8 +32,10 @@ message GetProductResponse {
 
 
 message CreateProductRequest {
-  string description = 1;
-  int32 price = 2;
+  string name = 1;
+  string description = 2;
+  int32 price = 3;
+  int32 quantity = 4;
 }
 
 

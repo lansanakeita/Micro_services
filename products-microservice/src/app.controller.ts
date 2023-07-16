@@ -51,15 +51,6 @@ export class AppController implements ProductServiceController{
   
 
   @GrpcMethod(PRODUCT_SERVICE_NAME)
-  // async deleteProduct(request: DeleteProductRequest, metadata?: Metadata): Promise<Product>{
-  //   const product:Product = {
-  //     description: "chaise 40x30",
-  //     price: 65
-  //   }
-  //   return product;
-  // }
-
-  @GrpcMethod(PRODUCT_SERVICE_NAME)
   async deleteProduct(request: DeleteProductRequest, metadata?: Metadata): Promise<Product> {
     const id = request.id;
   

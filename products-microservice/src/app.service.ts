@@ -17,8 +17,10 @@ export class AppService {
   async CreateProduct(product: Prisma.ProductCreateInput): Promise<Product> {
     return this.prisma.product.create({
       data: {
+        name:product.name,
         description: product.description,
         price: product.price,
+        quantity:product.quantity
       },
     });
   }
@@ -29,8 +31,11 @@ export class AppService {
       return this.prisma.product.update({
         where: { id },
         data: {
+          name:product.name,
           description: product.description,
           price: product.price,
+          quantity:product.quantity
+          
         },
       });
     } catch (error) {
@@ -38,28 +43,6 @@ export class AppService {
       throw new HttpException('An error occurred while updating the product.', HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
-
-  // async DeleteProduct(id: number): Promise<Product> {
-  //   try {
-  //     return this.prisma.product.delete({
-  //       where: { id: Number(id)},
-  //     });
-  //   } catch (error) {
-  //     console.error(error);
-  //     throw new HttpException('An error occurred while deleting the product.', HttpStatus.INTERNAL_SERVER_ERROR);
-  //   }
-  // }
-
-  // async deleteProduct(id: number): Promise<void> {
-  //   try {
-  //     await this.prisma.product.delete({
-  //       where: { id },
-  //     });
-  //   } catch (error) {
-  //     console.error(error);
-  //     throw new HttpException('Une erreur s\'est produite lors de la suppression du produit.', HttpStatus.INTERNAL_SERVER_ERROR);
-  //   }
-  // }
 
   async deleteProduct(id: number): Promise<Product> {
     return this.prisma.product.delete({

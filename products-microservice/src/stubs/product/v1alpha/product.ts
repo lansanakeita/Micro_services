@@ -7,13 +7,18 @@ export const protobufPackage = "product.v1alpha";
 
 export interface Product {
   id?: number | undefined;
+  name?: string | undefined;
   description?: string | undefined;
   price?: number | undefined;
+  quantiry?: number | undefined;
 }
 
 export interface GetProductRequest {
   id?: number | undefined;
+  name?: string | undefined;
   description?: string | undefined;
+  price?: number | undefined;
+  quantiry?: number | undefined;
 }
 
 export interface GetProductResponse {
@@ -21,8 +26,10 @@ export interface GetProductResponse {
 }
 
 export interface CreateProductRequest {
+  name?: string | undefined;
   description?: string | undefined;
   price?: number | undefined;
+  quantiry?: number | undefined;
 }
 
 export interface UpdateProductRequest {
