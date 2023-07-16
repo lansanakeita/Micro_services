@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package product.v1alpha;
+
+message Product {
+  int32 id = 1;
+  string description = 2;
+  int32 price = 3;
+}
+
+
+service ProductService {
+  rpc GetProducts (GetProductRequest) returns (GetProductResponse);
+  rpc CreateProduct (CreateProductRequest) returns (Product);
+  rpc UpdateProduct (UpdateProductRequest) returns (Product);
+  rpc DeleteProduct (DeleteProductRequest) returns (Product);
+}
+
+message GetProductRequest {
+  int32 id = 1;
+  string description = 2;
+}
+
+
+message GetProductResponse {
+  repeated Product products = 1;
+}
+
+
+message CreateProductRequest {
+  string description = 1;
+  int32 price = 2;
+}
+
+
+message UpdateProductRequest {
+  int32 id = 1;
+  Product product = 2;
+}
+
+message DeleteProductRequest {
+  int32 id = 1;
+}
+
+message Empty {}
+
+
