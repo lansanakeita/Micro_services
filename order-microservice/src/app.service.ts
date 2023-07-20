@@ -1,8 +1,8 @@
 import { PrismaClient } from '@prisma/client';
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { Client, ClientGrpc } from '@nestjs/microservices';
-import { Order } from './stubs/order/v1alpha/order';
-import { Prisma } from '@prisma/client';
+import { Order, CreateOrderRequest} from './stubs/order/v1alpha/order';
+import { Prisma, OrderProduct } from '@prisma/client';
 import { PrismaService } from './prisma.service';
 
 @Injectable()
@@ -14,22 +14,31 @@ export class AppService {
     return orders;
   }
 
+  // async GetOrders(): Promise<Order[]> {
+  //   const orders = await this.prisma.order.findMany({
+  //     include: {
+  //       orderProducts: true,
+  //     },
+  //   });
+  //   return orders;
+  // }
+
   async CreateOrder(order: Prisma.OrderCreateInput): Promise<Order> {
-    return this.prisma.order.create({
+    const info = this.prisma.order.create({
       data: {
-        idProduct:order.idProduct,
-        quantityProduct: order.quantityProduct,
+        orderProducts:order.orderProducts
       },
     });
+    return info;
   }
 
-  async UpdateOrder(id: number, order: Prisma.OrderUpdateInput): Promise<Order> {
+  
+  async UpdateOrder(id: number, order: Prisma.OrderUncheckedUpdateInput): Promise<Order> {
     try {
       return this.prisma.order.update({
         where: { id },
         data: {
-          idProduct:order.idProduct,
-          quantityProduct: order.quantityProduct
+          orderProducts:order.orderProducts,
         },
       });
     } catch (error) {

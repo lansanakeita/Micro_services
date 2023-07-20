@@ -31,6 +31,7 @@
 ```bash
 $ npm install
 $ buf generate src/proto/order/v1alpha/order.proto : pour générer le dossier depuis ce ficher
+$ npm i nestjs-grpc-reflection : installer reflection
 
 ```
 

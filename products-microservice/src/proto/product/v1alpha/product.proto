@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package product.v1alpha;
+import "products-microservice\src\proto\product\v1alpha\product.proto";
 
 message Product {
   int32 id = 1;

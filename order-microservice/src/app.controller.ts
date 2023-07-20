@@ -1,4 +1,4 @@
-import { Controller, Get} from '@nestjs/common';
+import { Controller, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Order, GetOrderResponse, CreateOrderRequest, UpdateOrderRequest, DeleteOrderRequest, ORDER_SERVICE_NAME, OrderServiceController,
   OrderServiceControllerMethods, GetOrderRequest } from './stubs/order/v1alpha/order';
@@ -34,7 +34,8 @@ export class AppController {
       throw new RpcException("erreur de la création de la commande");
     }
   }
-  
+
+
 
   @GrpcMethod(ORDER_SERVICE_NAME)
   async updateOrder(request: UpdateOrderRequest,metadata?: Metadata,): Promise<Order> {

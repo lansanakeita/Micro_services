@@ -12,7 +12,14 @@ datasource db {
 }
 
 model Order {
-  id        Int     @id @default(autoincrement())
-  idProduct      Int
-  quantityProduct      Int
+  id              Int           @id @default(autoincrement())
+  orderProducts   OrderProduct[]
+}
+
+model OrderProduct {
+  id         Int     @id @default(autoincrement())
+  order      Order   @relation(fields: [orderId], references: [id])
+  orderId    Int
+  productId  Int
+  quantity   Int
 }

@@ -4,8 +4,12 @@ package order.v1alpha;
 
 message Order {
   int32 id = 1;
-  int32 idProduct = 2;
-  int32 quantityProduct = 3;
+  repeated OrderProductInfo orderProductInfos = 2;
+}
+
+message OrderProductInfo {
+  int32 productId = 1;
+  int32 quantity = 2;
 }
 
 
@@ -18,8 +22,7 @@ service OrderService {
 
 message GetOrderRequest {
     int32 id = 1;
-    int32 idProduct = 2;
-    int32 quantityProduct = 3;
+    repeated OrderProductInfo orderProductInfos = 2;
 }
 
 
@@ -29,8 +32,7 @@ message GetOrderResponse {
 
 
 message CreateOrderRequest {
-  int32 idProduct = 1;
-  int32 quantityProduct = 2;
+  repeated int32 idProduct = 1;
 }
 
 

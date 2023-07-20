@@ -7,14 +7,17 @@ export const protobufPackage = "order.v1alpha";
 
 export interface Order {
   id?: number | undefined;
-  idProduct?: number | undefined;
-  quantityProduct?: number | undefined;
+  orderProductInfos?: OrderProductInfo[] | undefined;
+}
+
+export interface OrderProductInfo {
+  productId?: number | undefined;
+  quantity?: number | undefined;
 }
 
 export interface GetOrderRequest {
   id?: number | undefined;
-  idProduct?: number | undefined;
-  quantityProduct?: number | undefined;
+  orderProductInfos?: OrderProductInfo[] | undefined;
 }
 
 export interface GetOrderResponse {
@@ -22,8 +25,11 @@ export interface GetOrderResponse {
 }
 
 export interface CreateOrderRequest {
-  idProduct?: number | undefined;
-  quantityProduct?: number | undefined;
+  // idProduct?: number[] | undefined;
+  orderProducts: {
+    productId: number;
+    quantity: number;
+  }[];
 }
 
 export interface UpdateOrderRequest {
