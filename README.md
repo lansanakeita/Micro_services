@@ -46,7 +46,7 @@ _Pour chaque microservice, un système de journalisation a été mis en place av
 
 ### Lancer l'application
 
-- Executez dans chaque microservice la commande `docker-compose up --build` pour créer la base de données de chaque microservice
+- Executez dans les microservices `user-api`, `product-api` et `order-api` la commande `docker-compose up --build` pour créer la base de données de chaque microservice
 - Allez à la racine de chaque microservuce dans l'espace de travail et exécutez la commande `yarn start`.
 - Le serive User sera lancé à l'adresse suivante : http://localhost:3001
 - Le serive Authentification sera lancé à l'adresse suivante : http://localhost:3002
