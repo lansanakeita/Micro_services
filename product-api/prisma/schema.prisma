@@ -1,0 +1,18 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource dbProduct {
+  provider = "postgresql"
+  url      = env("DATABASE_URL_PRODUCT_API")
+}
+
+model Product {
+  id          Int     @id @default(autoincrement())
+  name        String  @unique @dbProduct.VarChar(180)
+  description String  @dbProduct.VarChar(256)
+  price       Float
+}
