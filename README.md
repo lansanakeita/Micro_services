@@ -40,7 +40,7 @@ _Pour renforcer la sécurité des échanges entre les microservices, nous avons 
 
 - Exécutez `yarn install` ou simplement `yarn` à la racine de chaque microservice s'il n'y a pas de dossier **node_modules**
 
-### Lancer l'application Frontend
+### Lancer l'application
 
 - Allez à la racine de chaque microservuce dans l'espace de travail et exécutez la commande `yarn start`.
 - Le serive User sera lancé à l'adresse suivante : http://localhost:3001
