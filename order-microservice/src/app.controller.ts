@@ -13,17 +13,19 @@ export class AppController {
 
 
   @GrpcMethod(ORDER_SERVICE_NAME)
-  async getOrders(
-    request: GetOrderRequest,
-    metadata?: Metadata,
-  ): Promise<GetOrderResponse>{
-    try{
-      const orders = await this.appService.GetOrders();
-      return {orders};
-    }catch(error){
-      throw new RpcException("erreur de la récupération des éléments");
-    }
-  }
+  // async getOrders(
+  //   request: GetOrderRequest,
+  //   metadata?: Metadata,
+  // ): Promise<GetOrderResponse>{
+  //   try{
+  //     const orders = await this.appService.GetOrders();
+  //     return {orders};
+  //   }catch(error){
+  //     throw new RpcException("erreur de la récupération des éléments");
+  //   }
+  // }
+
+  
 
   @GrpcMethod(ORDER_SERVICE_NAME)
   async createOrder(request: CreateOrderRequest, metadata?: Metadata): Promise<Order>{
