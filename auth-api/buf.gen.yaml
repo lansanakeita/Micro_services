@@ -1,0 +1,13 @@
+version: v1
+managed:
+  enabled: true
+plugins:
+  # Here you can define the plugin, and they will generate stubs in the language of your choice
+  - plugin: buf.build/community/stephenh-ts-proto
+    # Specify the output directory, where the tstubs will be generated
+    out: ../auth-api/src/stubs/auth/v1alpha
+    # Specify options for the plugins
+    opt:
+      - addGrpcMetadata=true
+      - nestJs=true
+      - useOptionals=all
